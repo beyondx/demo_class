@@ -1,0 +1,112 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include "term.h"
+#include <assert.h>
+#include <string.h>
+#include <strings.h>
+
+int main()
+{
+	char buf[MAX] = {0};
+
+	struct term_t *term = (struct term_t *)malloc(sizeof(struct term_t));
+	assert(term != NULL);
+
+	term_init(term);
+
+	if (term->open_dev(term, "/dev/ttyS0") < 0) {
+		ERR_PRINT("open_dev failed\n");
+		goto err_open_dev;
+	}
+	
+	if (term->set_speed(term, 115200) < 0) {
+		ERR_PRINT("set_speed failed\n");
+		goto err;
+	}
+
+	if (term->set_attr(term, 8, 1, 'N') < 0) {
+		ERR_PRINT("set_attr failed\n");
+		goto err;
+	}
+	
+	sleep(1);
+	int count = 0;
+	//count = term->write_dev(term, "hello,world\r\n", 20);
+	//printf("count = %d\n", count);
+#if 0
+	while (fgets(buf, MAX - 1, stdin) != NULL) {
+		int buf_size = strlen(buf);
+		buf[buf_size - 1] = '\r';
+		buf[buf_size] = '\n';
+		buf[buf_size + 1] = '\0';
+		if ((count = term->write_dev(term, buf, strlen(buf) + 2)) < 0) {
+			perror("write_dev");
+		}
+		printf("\n count = %d, %s\n", count, buf);
+		if (strcmp(buf, "quit") == 0) {
+			break;
+		}
+		memset(buf, 0, count);
+	}
+#endif
+	//strncpy(buf, "hello,world\n", 20);
+#if 1
+	char n = '\0';
+	char w_buf[MAX] = {0};
+	do 
+	{
+	#if 0
+		fgets(w_buf, MAX, stdin);
+		*(strpbrk(w_buf,"\n\r")) = '\0';
+		if (term->write_dev(term, w_buf, MAX) < 0) {
+			perror("write_dev");
+		}
+		memset(w_buf, 0, MAX);
+		//sleep(1);
+	#endif
+	#if 1 //立即处理
+
+		while  (count = term->read_dev(term, buf, MAX)) {
+			if (count = -1) {
+				perror("read_dev failed");
+			}else {
+				printf("buf:%s\n", buf);
+			}
+			sleep(1);
+		 }
+		//printf("%s",buf);
+		printf("%c",*buf);
+		
+		fflush(stdout);
+		if (strcmp(buf, "quit") == 0) {
+			break;
+		}
+		memset(buf, 0, MAX);
+	#endif
+		
+	#if 0
+		if (term->read_line(term, buf, MAX) < 0) {
+			perror("write_dev failed");
+			goto out;
+		}
+		printf("%s", buf);
+		fflush(stdout);
+		// "quit" --> quit
+		if (strncmp(buf,"quit", 4) == 0) {
+			printf("byebye!\n");
+			break;
+		}
+		memset(buf, 0, MAX);
+	#endif
+
+	}while(1);
+#endif
+out:
+	term_destroy(term);
+	free(term);
+	
+	return 0;
+err:
+err_open_dev:
+	return -1;
+}
