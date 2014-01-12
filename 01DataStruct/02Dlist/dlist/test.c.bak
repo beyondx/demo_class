@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "dlist.h"
+
+struct  foo {
+	char *name;
+	int age;
+	char priv[0];
+};
+
+
+
+int main()
+{
+	printf("sizeof(struct foo) = %lu\n", sizeof(struct foo));
+
+	struct foo *p = (struct foo *)
+		malloc(sizeof(struct foo) + 4);
+	p->name = "Zorr";	
+	p->age = 18;
+	int tmp = 0x12345678;
+	strncpy(p->priv, (const char *)&tmp, sizeof(int));
+	
+	printf("name:%s, age:%d, val:%x\n", p->name, p->age, 
+			*(int *)(p->priv));
+
+
+	return 0;
+}

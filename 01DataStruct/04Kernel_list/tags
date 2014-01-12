@@ -1,0 +1,38 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+LIST_HEAD_INIT	list.h	/^#define   LIST_HEAD_INIT(/;"	d
+__list_add	list.h	/^static inline void __list_add(struct list_head *node, $/;"	f
+age	test.c	/^	int age;$/;"	m	struct:data_info	file:
+container_of	list.h	/^#define   container_of(/;"	d
+data	joesph.c	/^	int data;$/;"	m	struct:data_info	file:
+data_info	joesph.c	/^struct data_info {$/;"	s	file:
+data_info	test.c	/^struct data_info {$/;"	s	file:
+des	test.c	/^	char *des;$/;"	m	struct:data_info	file:
+joesph_loop	joesph.c	/^void joesph_loop(struct list_head *head, size_t start, size_t step)$/;"	f
+list	joesph.c	/^	struct list_head list;$/;"	m	struct:data_info	typeref:struct:data_info::list_head	file:
+list	test.c	/^	struct list_head list;$/;"	m	struct:data_info	typeref:struct:data_info::list_head	file:
+list_add	list.h	/^static inline void list_add(struct list_head *head, struct list_head *node)$/;"	f
+list_add_tail	list.h	/^static inline void list_add_tail(struct list_head *head, struct list_head *node)$/;"	f
+list_del	list.h	/^static inline void list_del(struct list_head *node)$/;"	f
+list_del_init	list.h	/^static inline void list_del_init(struct list_head *node)$/;"	f
+list_entry	list.h	/^#define   list_entry(/;"	d
+list_for_each	list.h	/^#define  list_for_each(/;"	d
+list_for_each_continue	list.h	/^#define  list_for_each_continue(/;"	d
+list_for_each_entry	list.h	/^#define  list_for_each_entry(/;"	d
+list_for_each_from	list.h	/^#define  list_for_each_from(/;"	d
+list_for_each_reverse	list.h	/^#define  list_for_each_reverse(/;"	d
+list_for_each_safe	list.h	/^#define  list_for_each_safe(/;"	d
+list_head	list.h	/^struct list_head {$/;"	s
+list_head_init	list.h	/^static inline void list_head_init(struct list_head *node)$/;"	f
+list_is_empty	list.h	/^static inline int list_is_empty(const struct list_head *head)$/;"	f
+main	joesph.c	/^int main()$/;"	f
+main	test.c	/^int main()$/;"	f
+name	test.c	/^	char *name;$/;"	m	struct:data_info	file:
+next	list.h	/^	struct list_head *next;$/;"	m	struct:list_head	typeref:struct:list_head::list_head
+offset_of	list.h	/^#define   offset_of(/;"	d
+prev	list.h	/^	struct list_head *prev;$/;"	m	struct:list_head	typeref:struct:list_head::list_head
+qq	test.c	/^	size_t qq;$/;"	m	struct:data_info	file:
